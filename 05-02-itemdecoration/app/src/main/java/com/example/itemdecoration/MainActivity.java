@@ -1,5 +1,8 @@
-package com.example.recyclerview;
+package com.example.itemdecoration;
 
+import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -23,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView.setAdapter(new MainRecyclerViewAdapter());
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(layoutManager);
+        mRecyclerView.addItemDecoration(new DivideDecoration(this));
     }
 
     @Override
@@ -76,6 +80,24 @@ public class MainActivity extends AppCompatActivity {
 
         public void setTitle(String title) {
             mTitle.setText(title);
+        }
+    }
+
+    private static class DivideDecoration extends RecyclerView.ItemDecoration {
+
+        private final Paint mPaint;
+
+        public DivideDecoration(Context context) {
+            mPaint = new Paint();
+            mPaint.setStrokeWidth(context.getResources().getDisplayMetrics().density * 5);
+        }
+
+        @Override
+        public void onDraw(Canvas c, RecyclerView parent, RecyclerView.State state) {
+            for (int i = 0; i < parent.getChildCount(); i++) {
+                final View view = parent.getChildAt(i);
+                c.drawLine(view.getLeft(), view.getBottom(), view.getRight(), view.getBottom(), mPaint);
+            }
         }
     }
 }
