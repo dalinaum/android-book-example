@@ -16,17 +16,17 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private RecyclerView mRecyclerView;
+    private RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        mRecyclerView.setAdapter(new MainRecyclerViewAdapter());
+        recyclerView = findViewById(R.id.recyclerView);
+        recyclerView.setAdapter(new MainRecyclerViewAdapter());
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
-        mRecyclerView.setLayoutManager(layoutManager);
-        mRecyclerView.addItemDecoration(new DivideDecoration(this));
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.addItemDecoration(new DivideDecoration(this));
     }
 
     @Override
@@ -71,32 +71,32 @@ public class MainActivity extends AppCompatActivity {
 
     private static class MainRecyclerViewViewHolder extends RecyclerView.ViewHolder {
 
-        private final TextView mTitle;
+        private final TextView title;
 
         public MainRecyclerViewViewHolder(View itemView) {
             super(itemView);
-            mTitle = (TextView) itemView.findViewById(R.id.title);
+            title = itemView.findViewById(R.id.title);
         }
 
         public void setTitle(String title) {
-            mTitle.setText(title);
+            this.title.setText(title);
         }
     }
 
     private static class DivideDecoration extends RecyclerView.ItemDecoration {
 
-        private final Paint mPaint;
+        private final Paint paint;
 
         public DivideDecoration(Context context) {
-            mPaint = new Paint();
-            mPaint.setStrokeWidth(context.getResources().getDisplayMetrics().density * 5);
+            paint = new Paint();
+            paint.setStrokeWidth(context.getResources().getDisplayMetrics().density * 5);
         }
 
         @Override
         public void onDraw(Canvas c, RecyclerView parent, RecyclerView.State state) {
             for (int i = 0; i < parent.getChildCount(); i++) {
                 final View view = parent.getChildAt(i);
-                c.drawLine(view.getLeft(), view.getBottom(), view.getRight(), view.getBottom(), mPaint);
+                c.drawLine(view.getLeft(), view.getBottom(), view.getRight(), view.getBottom(), paint);
             }
         }
     }
