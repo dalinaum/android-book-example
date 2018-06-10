@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        mRecyclerView = findViewById(R.id.recyclerView);
         mRecyclerView.setAdapter(new MainRecyclerViewAdapter());
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(layoutManager);
@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
 
         public MainRecyclerViewViewHolder(View itemView) {
             super(itemView);
-            mTitle = (TextView) itemView.findViewById(R.id.title);
+            mTitle = itemView.findViewById(R.id.title);
         }
 
         public void setTitle(String title) {
