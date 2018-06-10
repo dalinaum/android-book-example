@@ -13,16 +13,16 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private RecyclerView mRecyclerView;
+    private RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mRecyclerView = findViewById(R.id.recyclerView);
-        mRecyclerView.setAdapter(new MainRecyclerViewAdapter());
+        recyclerView = findViewById(R.id.recyclerView);
+        recyclerView.setAdapter(new MainRecyclerViewAdapter());
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
-        mRecyclerView.setLayoutManager(layoutManager);
+        recyclerView.setLayoutManager(layoutManager);
     }
 
     @Override
@@ -67,15 +67,15 @@ public class MainActivity extends AppCompatActivity {
 
     private static class MainRecyclerViewViewHolder extends RecyclerView.ViewHolder {
 
-        private final TextView mTitle;
+        private final TextView title;
 
         public MainRecyclerViewViewHolder(View itemView) {
             super(itemView);
-            mTitle = itemView.findViewById(R.id.title);
+            title = itemView.findViewById(R.id.title);
         }
 
         public void setTitle(String title) {
-            mTitle.setText(title);
+            this.title.setText(title);
         }
     }
 }
