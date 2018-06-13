@@ -98,7 +98,6 @@ public class MainActivity extends AppCompatActivity {
                 callback.onResult(body.results, body.previous, body.next);
             } catch (IOException e) {
                 e.printStackTrace();
-                callback.onResult(null, null, null);
             }
         }
 
@@ -116,7 +115,6 @@ public class MainActivity extends AppCompatActivity {
                 callback.onResult(body.results, body.previous);
             } catch (IOException e) {
                 e.printStackTrace();
-                callback.onResult(null, null);
             }
         }
 
@@ -134,7 +132,6 @@ public class MainActivity extends AppCompatActivity {
                 callback.onResult(body.results, body.next);
             } catch (IOException e) {
                 e.printStackTrace();
-                callback.onResult(null, null);
             }
         }
     }
