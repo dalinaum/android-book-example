@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ListView list = (ListView) findViewById(R.id.list);
+        ListView list = findViewById(R.id.list);
         list.setAdapter(new BaseAdapter() {
             String[] items = { "A", "B", "C", "D", "E", "F", "G" };
 
