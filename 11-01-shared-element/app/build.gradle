@@ -2,7 +2,6 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 27
-    buildToolsVersion "24.0.0"
 
     defaultConfig {
         applicationId "com.example.sharedElement"
@@ -20,7 +19,7 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    testimplemetation 'junit:junit:4.12'
-    implemetation 'com.android.support:appcompat-v7:24.0.0'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    testImplementation 'junit:junit:4.12'
+    implementation 'com.android.support:appcompat-v7:27.1.1'
 }
