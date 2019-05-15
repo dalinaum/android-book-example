@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import qrcode
 
 text = """
@@ -23,6 +24,25 @@ text = """
 06-05-listview
 07-02-activities
 07-03-viewmodel
+08-01-fragment
+08-02-fragment-with-activity
+08-03-fragment-programming
+08-04-fragment-replace
+09-01-resource
+10-01-shared-preferences
+10-02-database
+11-01-broadcast-receiver
+11-02-intent-service
+12-01-shared-element
+13-01-floating-action-button
+13-02-snackbar
+14-01-subclass-view
+14-02-view-group
+15-01-camera
+16-01-location
+17-01-simple-share
+18-01-simple-notification
+19-01-authentication
 """
 
 for line in text.splitlines():

@@ -1,0 +1,10 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:tools="http://schemas.android.com/tools"
+      xmlns:app="http://schemas.android.com/apk/res-auto"
+      tools:context=".MainActivity">
+    <item
+        android:id="@+id/android"
+        android:icon="@drawable/ic_icon"
+        app:showAsAction="ifRoom"
+        android:title="Android"/>
+</menu>
