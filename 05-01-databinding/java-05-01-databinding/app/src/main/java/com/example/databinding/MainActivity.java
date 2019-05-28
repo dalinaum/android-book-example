@@ -9,7 +9,7 @@ import com.example.databinding.databinding.ActivityMainBinding;
 public class MainActivity extends AppCompatActivity {
 
     private ViewModel viewModel;
-    private int count = 0;
+//    private int count = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
