@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
     inner class ViewModel {
         private var count = 0
 
-        var title: ObservableField<String> = ObservableField()
+        var title = ObservableField<String>()
 
         fun sayHello() {
             count++
