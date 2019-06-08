@@ -13,15 +13,15 @@ import android.widget.TextView
 
 class MainActivity : AppCompatActivity() {
 
-    private var recyclerView: RecyclerView? = null
+    private lateinit var recyclerView: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         recyclerView = findViewById(R.id.recyclerView)
-        recyclerView!!.adapter = MainRecyclerViewAdapter()
+        recyclerView.adapter = MainRecyclerViewAdapter()
         val layoutManager = LinearLayoutManager(this)
-        recyclerView!!.layoutManager = layoutManager
+        recyclerView.layoutManager = layoutManager
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
