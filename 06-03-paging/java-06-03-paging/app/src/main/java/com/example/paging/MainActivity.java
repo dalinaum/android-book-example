@@ -43,14 +43,12 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://pokeapi.co/api/v2/")
+                .baseUrl("https://pokeapi.co/api/v2/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         pokeAPI = retrofit.create(PokeAPI.class);
 
-        createLiveData().observe(this, results -> {
-            adapter.submitList(results);
-        });
+        createLiveData().observe(this, results -> adapter.submitList(results));
     }
 
     @Override
@@ -141,12 +139,12 @@ public class MainActivity extends AppCompatActivity {
             super(new DiffUtil.ItemCallback<Result>() {
                 @Override
                 public boolean areItemsTheSame(Result oldItem, Result newItem) {
-                    return oldItem.name == newItem.name;
+                    return oldItem.name.equals(newItem.name);
                 }
 
                 @Override
                 public boolean areContentsTheSame(Result oldItem, Result newItem) {
-                    return oldItem.name == newItem.name && oldItem.url == newItem.url;
+                    return oldItem.name.equals(newItem.name) && oldItem.url.equals(newItem.url);
                 }
             });
         }
