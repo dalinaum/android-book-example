@@ -90,11 +90,11 @@ class MainActivity : AppCompatActivity() {
         }
 
         override fun loadBefore(params: PageKeyedDataSource.LoadParams<String>, callback: PageKeyedDataSource.LoadCallback<String, Result>) {
-            val queryPart = params.key.split("\\?".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()[1]
-            val queries = queryPart.split("&".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
+            val queryPart = params.key.split("\\?".toRegex())[1]
+            val queries = queryPart.split("&".toRegex())
             val map = HashMap<String, String>()
             for (query in queries) {
-                val splited = query.split("=".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
+                val splited = query.split("=".toRegex())
                 map[splited[0]] = splited[1]
             }
             try {
@@ -109,11 +109,11 @@ class MainActivity : AppCompatActivity() {
         }
 
         override fun loadAfter(params: PageKeyedDataSource.LoadParams<String>, callback: PageKeyedDataSource.LoadCallback<String, Result>) {
-            val queryPart = params.key.split("\\?".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()[1]
-            val queries = queryPart.split("&".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
+            val queryPart = params.key.split("\\?".toRegex())[1]
+            val queries = queryPart.split("&".toRegex())
             val map = HashMap<String, String>()
             for (query in queries) {
-                val splited = query.split("=".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
+                val splited = query.split("=".toRegex())
                 map[splited[0]] = splited[1]
             }
             try {
