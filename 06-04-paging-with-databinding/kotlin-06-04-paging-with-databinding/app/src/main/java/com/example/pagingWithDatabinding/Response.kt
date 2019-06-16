@@ -1,4 +1,4 @@
-package com.example.paging
+package com.example.pagingWithDatabinding
 
 data class Response(
         var count: Int,

@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         binding.recyclerView.setLayoutManager(layoutManager);
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://pokeapi.co/api/v2/")
+                .baseUrl("https://pokeapi.co/api/v2/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         pokeAPI = retrofit.create(PokeAPI.class);
