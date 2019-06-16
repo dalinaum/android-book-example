@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ListView list = findViewById(R.id.list);
         list.setAdapter(new BaseAdapter() {
-            String[] items = { "A", "B", "C", "D", "E", "F", "G" };
+            String[] items = {"A", "B", "C", "D", "E", "F", "G"};
 
             @Override
             public int getCount() {
