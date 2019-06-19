@@ -15,13 +15,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         TextView textView = findViewById(R.id.textView);
-        PokeViewModel pokeViewModel = ViewModelProviders.of(this, new ViewModelProvider.Factory() {
-            @NonNull
-            @Override
-            public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
-                return (T) new PokeViewModel();
-            }
-        }).get(PokeViewModel.class);
+        PokeViewModel pokeViewModel = ViewModelProviders.of(this).get(PokeViewModel.class);
         pokeViewModel.getResults().observe(this, results -> {
             String text = "";
             for (Result result : results) {

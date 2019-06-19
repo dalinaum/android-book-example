@@ -20,7 +20,7 @@ public class PokeViewModel extends ViewModel {
             results = new MutableLiveData<>();
 
             Retrofit retrofit = new Retrofit.Builder()
-                    .baseUrl("http://pokeapi.co/api/v2/")
+                    .baseUrl("https://pokeapi.co/api/v2/")
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
 
