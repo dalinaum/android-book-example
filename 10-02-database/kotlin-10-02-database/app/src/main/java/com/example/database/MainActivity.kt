@@ -21,8 +21,7 @@ class MainActivity : AppCompatActivity() {
         val values = ContentValues()
         values.put(DBHelper.Users.COLUMN_NAME_NAME, "Leo Kim " + Math.random())
         values.put(DBHelper.Users.COLUMN_NAME_EMAIL, "lk@realm.io")
-        writableDatabase.insert(DBHelper.Users.TABLE_NAME,
-                null, values)
+        writableDatabase.insert(DBHelper.Users.TABLE_NAME, null, values)
 
         val readableDatabase = dbHelper.readableDatabase
         val projection = arrayOf(BaseColumns._ID, DBHelper.Users.COLUMN_NAME_NAME, DBHelper.Users.COLUMN_NAME_EMAIL)
