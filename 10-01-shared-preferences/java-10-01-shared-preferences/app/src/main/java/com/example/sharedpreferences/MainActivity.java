@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        textView = (TextView) findViewById(R.id.text_view);
+        textView = findViewById(R.id.text_view);
         sharedPreferences = getSharedPreferences("com.example.sharedpreferenes.PREFERENCE_FILE_KEY", MODE_PRIVATE);
     }
 
