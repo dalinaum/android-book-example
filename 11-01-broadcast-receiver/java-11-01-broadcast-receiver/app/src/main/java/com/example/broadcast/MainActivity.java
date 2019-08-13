@@ -1,6 +1,7 @@
 package com.example.broadcast;
 
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -9,10 +10,14 @@ import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
 
+    private FirstReceiver receiver;
+    private IntentFilter filter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        filter = new IntentFilter("com.example.broadcast.FIRST_MESSAGE");
 
         findViewById(R.id.button).setOnClickListener(v -> {
             Intent intent = new Intent("com.example.broadcast.FIRST_MESSAGE");
@@ -40,5 +45,19 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        receiver = new FirstReceiver();
+        registerReceiver(receiver, filter);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        unregisterReceiver(receiver);
+        receiver = null;
     }
 }

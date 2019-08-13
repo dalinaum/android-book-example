@@ -17,11 +17,12 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name=".FirstReceiver">
-            <intent-filter>
-                <action android:name="com.example.broadcast.FIRST_MESSAGE" />
-            </intent-filter>
-        </receiver>
+        <!-- Oreo (API level 26) 부터는 사용할 수 없음. -->
+        <!--<receiver android:name=".FirstReceiver">-->
+            <!--<intent-filter>-->
+                <!--<action android:name="com.example.broadcast.FIRST_MESSAGE" />-->
+            <!--</intent-filter>-->
+        <!--</receiver>-->
     </application>
 
 </manifest>
