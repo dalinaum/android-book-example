@@ -14,22 +14,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        findViewById(R.id.plus10).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, FirstIntentService.class);
-                intent.putExtra(FirstIntentService.NUMBER, 10);
-                startService(intent);
-            }
+        findViewById(R.id.plus10).setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, FirstIntentService.class);
+            intent.putExtra(FirstIntentService.NUMBER, 10);
+            startService(intent);
         });
 
-        findViewById(R.id.minus10).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, FirstIntentService.class);
-                intent.putExtra(FirstIntentService.NUMBER, -10);
-                startService(intent);
-            }
+        findViewById(R.id.minus10).setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, FirstIntentService.class);
+            intent.putExtra(FirstIntentService.NUMBER, -10);
+            startService(intent);
         });
     }
 
