@@ -6,10 +6,6 @@ import android.content.Intent;
 import android.widget.Toast;
 
 
-/**
- * Created by dalinaum on 03/07/2017.
- */
-
 public class FirstReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
