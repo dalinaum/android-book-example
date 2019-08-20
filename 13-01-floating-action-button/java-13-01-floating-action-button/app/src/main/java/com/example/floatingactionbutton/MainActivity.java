@@ -14,13 +14,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        FloatingActionButton button = (FloatingActionButton) findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(MainActivity.this, "button clicked!", Toast.LENGTH_SHORT).show();
-            }
-        });
+        FloatingActionButton button = findViewById(R.id.button);
+        button.setOnClickListener(view -> Toast.makeText(MainActivity.this, "button clicked!", Toast.LENGTH_SHORT).show());
     }
 
     @Override
