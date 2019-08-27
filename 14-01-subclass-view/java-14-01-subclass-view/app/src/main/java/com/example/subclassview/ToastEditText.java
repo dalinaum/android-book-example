@@ -2,11 +2,10 @@ package com.example.subclassview;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.widget.EditText;
 import android.widget.Toast;
 
 
-public class ToastEditText extends EditText {
+public class ToastEditText extends androidx.appcompat.widget.AppCompatEditText {
 
     private Toast toast;
 
