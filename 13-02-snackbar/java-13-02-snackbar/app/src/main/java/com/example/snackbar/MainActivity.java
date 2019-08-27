@@ -1,10 +1,14 @@
 package com.example.snackbar;
 
 import android.os.Bundle;
-import android.support.design.widget.CoordinatorLayout;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
+
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,19 +19,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        final CoordinatorLayout coordinatorView = (CoordinatorLayout) findViewById(R.id.coordinatorLayout);
-        final FloatingActionButton button = (FloatingActionButton) findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(coordinatorView, "Hello Snackbar", Snackbar.LENGTH_SHORT).setAction("Another Snackbar", new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Snackbar.make(coordinatorView, "Hello Another Snackbar", Snackbar.LENGTH_SHORT).show();
-                    }
-                }).show();
-            }
-        });
+        final CoordinatorLayout coordinatorView = findViewById(R.id.coordinatorLayout);
+        final FloatingActionButton button = findViewById(R.id.button);
+        button.setOnClickListener(view ->
+                Snackbar.make(coordinatorView, "Hello Snackbar", Snackbar.LENGTH_SHORT)
+                        .setAction("Another Snackbar", view1 ->
+                                Snackbar.make(coordinatorView, "Hello Another Snackbar", Snackbar.LENGTH_SHORT)
+                                        .show()
+                        ).show());
     }
 
     @Override
