@@ -42,7 +42,6 @@ class PreviewThread(private val context: Context, private val textureView: Textu
         } catch (e: CameraAccessException) {
             e.printStackTrace()
         }
-
     }
 
     private fun getBackFacingCameraId(cameraManager: CameraManager): String? {
@@ -66,14 +65,14 @@ class PreviewThread(private val context: Context, private val textureView: Textu
         texture.setDefaultBufferSize(previewSize!!.width, previewSize!!.height)
         val surface = Surface(texture)
         try {
-            previewBuilder = cameraDevice!!.createCaptureRequest(CameraDevice.TEMPLATE_PREVIEW)
+            previewBuilder = cameraDevice?.createCaptureRequest(CameraDevice.TEMPLATE_PREVIEW)
         } catch (e: CameraAccessException) {
             e.printStackTrace()
         }
 
-        previewBuilder!!.addTarget(surface)
+        previewBuilder?.addTarget(surface)
         try {
-            cameraDevice!!.createCaptureSession(Arrays.asList(surface), object : CameraCaptureSession.StateCallback() {
+            cameraDevice?.createCaptureSession(Arrays.asList(surface), object : CameraCaptureSession.StateCallback() {
                 override fun onConfigured(session: CameraCaptureSession) {
                     previewSession = session
                     updatePreview()
@@ -86,20 +85,18 @@ class PreviewThread(private val context: Context, private val textureView: Textu
         } catch (e: CameraAccessException) {
             e.printStackTrace()
         }
-
     }
 
     private fun updatePreview() {
-        previewBuilder!!.set(CaptureRequest.CONTROL_MODE, CameraMetadata.CONTROL_MODE_AUTO)
+        previewBuilder?.set(CaptureRequest.CONTROL_MODE, CameraMetadata.CONTROL_MODE_AUTO)
         val thread = HandlerThread("PreviewThread")
         thread.start()
         val backgroundHandler = Handler(thread.looper)
         try {
-            previewSession!!.setRepeatingRequest(previewBuilder!!.build(), null, backgroundHandler)
+            previewSession?.setRepeatingRequest(previewBuilder!!.build(), null, backgroundHandler)
         } catch (e: CameraAccessException) {
             e.printStackTrace()
         }
-
     }
 
     fun onPause() {

@@ -3,12 +3,10 @@ package com.example.camera
 import android.Manifest
 import android.content.pm.PackageManager
 import android.os.Bundle
-
-import androidx.appcompat.app.AppCompatActivity
-
 import android.view.Menu
 import android.view.MenuItem
 import android.view.TextureView
+import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
     private var textureView: TextureView? = null
@@ -60,7 +58,7 @@ class MainActivity : AppCompatActivity() {
                     if (grantResult == PackageManager.PERMISSION_GRANTED) {
                         textureView = findViewById(R.id.texture_view)
                         previewThread = PreviewThread(this, textureView!!)
-                        previewThread!!.openCamera()
+                        previewThread?.openCamera()
                     } else {
                         finish()
                     }
@@ -70,7 +68,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
-
         val REQUEST_CAMERA = 1
     }
 }
