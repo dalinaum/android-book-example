@@ -110,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         switch (requestCode) {
             case REQUEST_LOCATION_PERMISSIONS:
-                if (grantResults.length >= 1 &&
+                if (grantResults.length == 1 &&
                         grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     getLocation();
                 }
