@@ -13,7 +13,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 
 public class MainActivity extends AppCompatActivity {
@@ -22,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
     private Location lastLocation;
     private TextView location;
     private FusedLocationProviderClient mFusedLocationClient;
-    private LocationRequest mLocationRequest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,11 +57,6 @@ public class MainActivity extends AppCompatActivity {
         checkPermission();
     }
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-    }
-
     private void checkPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -76,17 +69,12 @@ public class MainActivity extends AppCompatActivity {
         } else {
             getLocation();
         }
-
     }
 
     private void getLocation() {
         if (mFusedLocationClient == null) {
             mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         }
-        mLocationRequest = new LocationRequest();
-        mLocationRequest.setInterval(120000); // two minute interval
-        mLocationRequest.setFastestInterval(120000);
-        mLocationRequest.setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY);
 
         mFusedLocationClient.getLastLocation()
                 .addOnCompleteListener(this, task -> {

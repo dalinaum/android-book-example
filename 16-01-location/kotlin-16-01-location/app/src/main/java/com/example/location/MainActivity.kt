@@ -9,9 +9,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-
 import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationServices
 
 class MainActivity : AppCompatActivity() {
@@ -19,7 +17,6 @@ class MainActivity : AppCompatActivity() {
     private var lastLocation: Location? = null
     private var location: TextView? = null
     private var mFusedLocationClient: FusedLocationProviderClient? = null
-    private var mLocationRequest: LocationRequest? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,10 +48,6 @@ class MainActivity : AppCompatActivity() {
         checkPermission()
     }
 
-    override fun onStop() {
-        super.onStop()
-    }
-
     private fun checkPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -65,17 +58,12 @@ class MainActivity : AppCompatActivity() {
         } else {
             getLocation()
         }
-
     }
 
     private fun getLocation() {
         if (mFusedLocationClient == null) {
             mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
         }
-        mLocationRequest = LocationRequest()
-        mLocationRequest?.interval = 120000 // two minute interval
-        mLocationRequest?.fastestInterval = 120000
-        mLocationRequest?.priority = LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY
 
         mFusedLocationClient?.lastLocation
                 ?.addOnCompleteListener(this) { task ->
