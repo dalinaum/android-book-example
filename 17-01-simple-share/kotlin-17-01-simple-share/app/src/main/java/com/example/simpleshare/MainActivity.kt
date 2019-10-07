@@ -2,8 +2,6 @@ package com.example.simpleshare
 
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.content.res.AssetManager
-import android.net.Uri
 import android.os.AsyncTask
 import android.os.Build
 import android.os.Bundle
@@ -14,12 +12,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.ShareActionProvider
 import androidx.core.content.FileProvider
 import androidx.core.view.MenuItemCompat
-
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
-import java.io.InputStream
-import java.io.OutputStream
 
 class MainActivity : AppCompatActivity() {
     private var shareActionProvider: ShareActionProvider? = null
@@ -78,14 +73,14 @@ class MainActivity : AppCompatActivity() {
 
         val assetManager = assets
         try {
-            val `in` = assetManager.open("cat.jpg")
-            val out = FileOutputStream(imagePath)
-            val buffer = ByteArray(`in`.available())
-            `in`.read(buffer)
-            out.write(buffer)
-            `in`.close()
-            out.flush()
-            out.close()
+            val inputStream = assetManager.open("cat.jpg")
+            val outputStream = FileOutputStream(imagePath)
+            val buffer = ByteArray(inputStream.available())
+            inputStream.read(buffer)
+            outputStream.write(buffer)
+            inputStream.close()
+            outputStream.flush()
+            outputStream.close()
         } catch (e: IOException) {
             e.printStackTrace()
         }
@@ -100,7 +95,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         override fun onPostExecute(aVoid: Void) {
-            Log.d("AAAA", "shareActionProvider" + shareActionProvider!!)
             if (shareActionProvider != null) {
                 val shareIntent = Intent(Intent.ACTION_SEND)
                 shareIntent.type = "image/jpg"
@@ -109,7 +103,6 @@ class MainActivity : AppCompatActivity() {
                 val assetUri = FileProvider.getUriForFile(this@MainActivity, "com.example.simpleshare.fileprovider", imageFile)
                 shareIntent.putExtra(Intent.EXTRA_STREAM, assetUri)
                 shareActionProvider!!.setShareIntent(shareIntent)
-                Log.d("AAAA", "shareActionProvider set!")
             }
         }
     }

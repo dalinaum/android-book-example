@@ -86,14 +86,14 @@ public class MainActivity extends AppCompatActivity {
 
         AssetManager assetManager = getAssets();
         try {
-            InputStream in = assetManager.open("cat.jpg");
-            OutputStream out = new FileOutputStream(imagePath);
-            byte[] buffer = new byte[in.available()];
-            in.read(buffer);
-            out.write(buffer);
-            in.close();
-            out.flush();
-            out.close();
+            InputStream inputStream = assetManager.open("cat.jpg");
+            OutputStream outputStream = new FileOutputStream(imagePath);
+            byte[] buffer = new byte[inputStream.available()];
+            inputStream.read(buffer);
+            outputStream.write(buffer);
+            inputStream.close();
+            outputStream.flush();
+            outputStream.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -109,7 +109,6 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(Void aVoid) {
-            Log.d("AAAA", "shareActionProvider" + shareActionProvider);
             if (shareActionProvider != null) {
                 Intent shareIntent = new Intent(Intent.ACTION_SEND);
                 shareIntent.setType("image/jpg");
@@ -118,7 +117,6 @@ public class MainActivity extends AppCompatActivity {
                 Uri assetUri = FileProvider.getUriForFile(MainActivity.this, "com.example.simpleshare.fileprovider", imageFile);
                 shareIntent.putExtra(Intent.EXTRA_STREAM, assetUri);
                 shareActionProvider.setShareIntent(shareIntent);
-                Log.d("AAAA", "shareActionProvider set!");
             }
         }
     }
