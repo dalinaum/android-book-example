@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         menuInflater.inflate(R.menu.menu_main, menu)
         val item = menu.findItem(R.id.action_share)
         shareActionProvider = MenuItemCompat.getActionProvider(item) as ShareActionProvider
-        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP_MR1) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") == PackageManager.PERMISSION_GRANTED) {
                 ImageAsyncTask().execute()
             } else {
@@ -57,16 +57,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun copyImageFromAsset() {
-
-        try {
-            Log.d("TEST", filesDir.canonicalPath)
-        } catch (e: IOException) {
-            e.printStackTrace()
-        }
-
         val imagePath = filesDir.toString() + File.separator + "cat.jpg"
-        cacheDir
-
         if (File(imagePath).exists()) {
             return
         }
@@ -84,7 +75,6 @@ class MainActivity : AppCompatActivity() {
         } catch (e: IOException) {
             e.printStackTrace()
         }
-
     }
 
     internal inner class ImageAsyncTask : AsyncTask<Void, Void, Void>() {
@@ -102,7 +92,7 @@ class MainActivity : AppCompatActivity() {
                 val imageFile = File(imagePath)
                 val assetUri = FileProvider.getUriForFile(this@MainActivity, "com.example.simpleshare.fileprovider", imageFile)
                 shareIntent.putExtra(Intent.EXTRA_STREAM, assetUri)
-                shareActionProvider!!.setShareIntent(shareIntent)
+                shareActionProvider?.setShareIntent(shareIntent)
             }
         }
     }

@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         MenuItem item = menu.findItem(R.id.action_share);
         shareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(item);
-        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP_MR1) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") == PackageManager.PERMISSION_GRANTED) {
                 new ImageAsyncTask().execute();
             } else {
@@ -70,16 +70,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void copyImageFromAsset() {
-
-        try {
-            Log.d("TEST", getFilesDir().getCanonicalPath());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
         String imagePath = getFilesDir() + File.separator + "cat.jpg";
-        getCacheDir();
-
         if (new File(imagePath).exists()) {
             return;
         }
