@@ -84,7 +84,7 @@ class MainActivity : AppCompatActivity() {
             return null
         }
 
-        override fun onPostExecute(aVoid: Void) {
+        override fun onPostExecute(aVoid: Void?) {
             if (shareActionProvider != null) {
                 val shareIntent = Intent(Intent.ACTION_SEND)
                 shareIntent.type = "image/jpg"
