@@ -13,8 +13,6 @@ import androidx.core.app.NotificationCompat;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button button;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,15 +28,15 @@ public class MainActivity extends AppCompatActivity {
             notificationManager.createNotificationChannel(notificationChannel);
         }
 
-        button = findViewById(R.id.button);
+        Button button = findViewById(R.id.button);
         button.setOnClickListener(v -> {
             NotificationCompat.Builder builder =
                     new NotificationCompat.Builder(MainActivity.this, channelId)
                             .setSmallIcon(R.drawable.ic_noti)
                             .setContentText("노티피케이션입니다. 안녕하세요.")
                             .setContentTitle("간단한 노티");
-            int notyId = 1;
-            notificationManager.notify(notyId, builder.build());
+            int notificationId = 1;
+            notificationManager.notify(notificationId, builder.build());
         });
     }
 
