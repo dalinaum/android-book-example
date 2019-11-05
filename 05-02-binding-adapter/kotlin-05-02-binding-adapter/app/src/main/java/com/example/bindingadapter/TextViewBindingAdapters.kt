@@ -1,6 +1,6 @@
 package com.example.bindingadapter
 
-import android.databinding.BindingAdapter
+import androidx.databinding.BindingAdapter
 import android.widget.TextView
 
 object TextViewBindingAdapters {

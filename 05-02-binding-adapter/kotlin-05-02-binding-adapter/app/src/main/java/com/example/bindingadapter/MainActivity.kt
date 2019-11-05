@@ -1,8 +1,8 @@
 package com.example.bindingadapter
 
-import android.databinding.DataBindingUtil
-import android.databinding.ObservableField
-import android.support.v7.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ObservableField
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
 import com.example.dalinaum.bindingadapter.R
