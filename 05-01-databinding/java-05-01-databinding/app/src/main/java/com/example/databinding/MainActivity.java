@@ -2,8 +2,12 @@ package com.example.databinding;
 
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ObservableField;
+
+import android.app.Activity;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.ViewDataBinding;
+
 import com.example.databinding.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
