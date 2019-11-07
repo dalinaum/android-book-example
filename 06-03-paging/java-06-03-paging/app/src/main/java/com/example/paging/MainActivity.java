@@ -1,16 +1,16 @@
 package com.example.paging;
 
-import android.arch.lifecycle.LiveData;
-import android.arch.paging.LivePagedListBuilder;
-import android.arch.paging.PageKeyedDataSource;
-import android.arch.paging.PagedList;
-import android.arch.paging.PagedListAdapter;
+import androidx.lifecycle.LiveData;
+import androidx.paging.LivePagedListBuilder;
+import androidx.paging.PageKeyedDataSource;
+import androidx.paging.PagedList;
+import androidx.paging.PagedListAdapter;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.util.DiffUtil;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DiffUtil;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -77,9 +77,9 @@ public class MainActivity extends AppCompatActivity {
                 .setPageSize(20)
                 .setPrefetchDistance(10)
                 .build();
-        return new LivePagedListBuilder<>(new android.arch.paging.DataSource.Factory<String, Result>() {
+        return new LivePagedListBuilder<>(new androidx.paging.DataSource.Factory<String, Result>() {
             @Override
-            public android.arch.paging.DataSource<String, Result> create() {
+            public androidx.paging.DataSource<String, Result> create() {
                 return new MainActivity.DataSource();
             }
         }, config).build();
