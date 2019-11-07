@@ -1,18 +1,18 @@
 package com.example.pagingWithDatabinding
 
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.Observer
-import android.arch.paging.LivePagedListBuilder
-import android.arch.paging.PageKeyedDataSource
-import android.arch.paging.PagedList
-import android.arch.paging.PagedListAdapter
-import android.databinding.DataBindingUtil
-import android.databinding.ObservableField
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
+import androidx.paging.LivePagedListBuilder
+import androidx.paging.PageKeyedDataSource
+import androidx.paging.PagedList
+import androidx.paging.PagedListAdapter
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ObservableField
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.util.DiffUtil
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
@@ -72,8 +72,8 @@ class MainActivity : AppCompatActivity() {
                 .setPageSize(20)
                 .setPrefetchDistance(10)
                 .build()
-        return LivePagedListBuilder(object : android.arch.paging.DataSource.Factory<String, Result>() {
-            override fun create(): android.arch.paging.DataSource<String, Result> {
+        return LivePagedListBuilder(object : androidx.paging.DataSource.Factory<String, Result>() {
+            override fun create(): androidx.paging.DataSource<String, Result> {
                 return DataSource()
             }
         }, config).build()
