@@ -76,7 +76,7 @@ class MainActivity : AppCompatActivity() {
 
     private inner class DataSource : PageKeyedDataSource<String, Result>() {
 
-        override fun loadInitial(params: PageKeyedDataSource.LoadInitialParams<String>, callback: PageKeyedDataSource.LoadInitialCallback<String, Result>) {
+        override fun loadInitial(params: LoadInitialParams<String>, callback: LoadInitialCallback<String, Result>) {
             try {
                 val body = pokeAPI.listPokemons().execute().body()
                 body?.let { body ->
@@ -88,7 +88,7 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-        override fun loadBefore(params: PageKeyedDataSource.LoadParams<String>, callback: PageKeyedDataSource.LoadCallback<String, Result>) {
+        override fun loadBefore(params: LoadParams<String>, callback: LoadCallback<String, Result>) {
             val queryPart = params.key.split("?")[1]
             val queries = queryPart.split("&")
             val map = mutableMapOf<String, String>()
@@ -107,7 +107,7 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-        override fun loadAfter(params: PageKeyedDataSource.LoadParams<String>, callback: PageKeyedDataSource.LoadCallback<String, Result>) {
+        override fun loadAfter(params: LoadParams<String>, callback: LoadCallback<String, Result>) {
             val queryPart = params.key.split("?")[1]
             val queries = queryPart.split("&")
             val map = mutableMapOf<String, String>()
@@ -123,7 +123,6 @@ class MainActivity : AppCompatActivity() {
             } catch (e: IOException) {
                 e.printStackTrace()
             }
-
         }
     }
 
