@@ -89,7 +89,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         override fun loadBefore(params: PageKeyedDataSource.LoadParams<String>, callback: PageKeyedDataSource.LoadCallback<String, Result>) {
-            val queryPart = params.key.split("\\?")[1]
+            val queryPart = params.key.split("?")[1]
             val queries = queryPart.split("&")
             val map = mutableMapOf<String, String>()
             for (query in queries) {
@@ -108,7 +108,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         override fun loadAfter(params: PageKeyedDataSource.LoadParams<String>, callback: PageKeyedDataSource.LoadCallback<String, Result>) {
-            val queryPart = params.key.split("\\?")[1]
+            val queryPart = params.key.split("?")[1]
             val queries = queryPart.split("&")
             val map = mutableMapOf<String, String>()
             for (query in queries) {
