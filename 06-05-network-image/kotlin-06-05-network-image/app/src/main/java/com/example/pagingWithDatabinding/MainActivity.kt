@@ -22,7 +22,6 @@ import com.example.pagingWithDatabinding.databinding.ItemRecyclerviewBinding
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.io.IOException
-import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -95,14 +94,20 @@ class MainActivity : AppCompatActivity() {
         override fun loadBefore(params: PageKeyedDataSource.LoadParams<String>, callback: PageKeyedDataSource.LoadCallback<String, Result>) {
             val queryPart = params.key.split("\\?".toRegex())[1]
             val queries = queryPart.split("&".toRegex())
-            val map = HashMap<String, String>()
+            val map = mutableMapOf<String, String>()
             for (query in queries) {
                 val parts = query.split("=".toRegex())
                 map[parts[0]] = parts[1]
             }
+            val offset = map["offset"]
+            val limit = map["limit"]
+            if (offset == null || limit == null) {
+                return;
+            }
             try {
-                val body = pokeAPI.listPokemons(map["offset"]!!, map["limit"]!!).execute().body()
-                callback.onResult(body!!.results, body.previous)
+                pokeAPI.listPokemons(offset, limit).execute().body()?.let { body ->
+                    callback.onResult(body.results, body.previous)
+                }
             } catch (e: IOException) {
                 e.printStackTrace()
             }
@@ -117,9 +122,15 @@ class MainActivity : AppCompatActivity() {
                 val parts = query.split("=".toRegex())
                 map[parts[0]] = parts[1]
             }
+            val offset = map["offset"]
+            val limit = map["limit"]
+            if (offset == null || limit == null) {
+                return;
+            }
             try {
-                val body = pokeAPI.listPokemons(map["offset"]!!, map["limit"]!!).execute().body()
-                callback.onResult(body!!.results, body.next)
+                pokeAPI.listPokemons(offset, limit).execute().body()?.let { body ->
+                    callback.onResult(body.results, body.next)
+                }
             } catch (e: IOException) {
                 e.printStackTrace()
             }

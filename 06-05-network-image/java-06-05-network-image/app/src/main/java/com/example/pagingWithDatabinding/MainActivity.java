@@ -176,10 +176,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private static class MainRecyclerViewViewHolder extends RecyclerView.ViewHolder {
+        private final ItemRecyclerviewBinding binding;
         private final ViewModel viewModel;
 
         public MainRecyclerViewViewHolder(ItemRecyclerviewBinding binding) {
             super(binding.getRoot());
+            this.binding = binding;
             viewModel = new ViewModel();
             binding.setViewModel(viewModel);
         }
