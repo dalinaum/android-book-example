@@ -95,7 +95,7 @@ class MainActivity : AppCompatActivity() {
         override fun loadBefore(params: PageKeyedDataSource.LoadParams<String>, callback: PageKeyedDataSource.LoadCallback<String, Result>) {
             val queryPart = params.key.split("\\?")[1]
             val queries = queryPart.split("&")
-            val map = HashMap<String, String>()
+            val map = mutableMapOf<String, String>()
             for (query in queries) {
                 val parts = query.split("=")
                 map[parts[0]] = parts[1]
