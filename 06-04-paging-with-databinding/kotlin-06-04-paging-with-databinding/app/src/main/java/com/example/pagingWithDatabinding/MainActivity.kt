@@ -93,11 +93,11 @@ class MainActivity : AppCompatActivity() {
         }
 
         override fun loadBefore(params: PageKeyedDataSource.LoadParams<String>, callback: PageKeyedDataSource.LoadCallback<String, Result>) {
-            val queryPart = params.key.split("\\?".toRegex())[1]
-            val queries = queryPart.split("&".toRegex())
+            val queryPart = params.key.split("\\?")[1]
+            val queries = queryPart.split("&")
             val map = HashMap<String, String>()
             for (query in queries) {
-                val parts = query.split("=".toRegex())
+                val parts = query.split("=")
                 map[parts[0]] = parts[1]
             }
             try {
@@ -110,11 +110,11 @@ class MainActivity : AppCompatActivity() {
         }
 
         override fun loadAfter(params: PageKeyedDataSource.LoadParams<String>, callback: PageKeyedDataSource.LoadCallback<String, Result>) {
-            val queryPart = params.key.split("\\?".toRegex())[1]
-            val queries = queryPart.split("&".toRegex())
+            val queryPart = params.key.split("\\?")[1]
+            val queries = queryPart.split("&")
             val map = mutableMapOf<String, String>()
             for (query in queries) {
-                val parts = query.split("=".toRegex())
+                val parts = query.split("=")
                 map[parts[0]] = parts[1]
             }
             try {
