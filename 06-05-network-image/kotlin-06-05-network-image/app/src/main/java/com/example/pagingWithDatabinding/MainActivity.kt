@@ -1,10 +1,8 @@
 package com.example.pagingWithDatabinding
 
+import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.Menu
-import android.view.MenuItem
-import android.view.ViewGroup
+import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ObservableField
@@ -177,5 +175,14 @@ class MainActivity : AppCompatActivity() {
     class ViewModel {
         var name = ObservableField<String>()
         var url = ObservableField<String>()
+
+        fun openDetail(view: View) {
+            val parts = url.get()!!.split("/").toTypedArray()
+            val pid = parts[6].toInt()
+            val context = view.context
+            val intent = Intent(context, DetailActivity::class.java)
+            intent.putExtra("pid", pid)
+            context.startActivity(intent)
+        }
     }
 }

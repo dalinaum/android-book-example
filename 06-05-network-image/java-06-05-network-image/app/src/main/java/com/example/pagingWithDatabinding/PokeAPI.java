@@ -2,6 +2,7 @@ package com.example.pagingWithDatabinding;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface PokeAPI {
@@ -10,4 +11,7 @@ public interface PokeAPI {
 
     @GET("pokemon/")
     Call<Response> listPokemons(@Query("offset") String offset, @Query("limit") String limit);
+
+    @GET("pokemon/{pid}/")
+    Call<PokemonResponse> getPokemon(@Path("pid") int pid);
 }
