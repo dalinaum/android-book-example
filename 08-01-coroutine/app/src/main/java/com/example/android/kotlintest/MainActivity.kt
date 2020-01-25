@@ -1,10 +1,10 @@
 package com.example.android.kotlintest
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.*
-import kotlin.coroutines.coroutineContext
 
 class MainActivity : AppCompatActivity() {
 
@@ -12,32 +12,26 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-//        GlobalScope.launch(Dispatchers.Default) {
-//            delay(1000)
-//            Log.d("AAA", "Hello World!")
-//        }
-
-        MainScope().launch {
-            val fetchedData = fetchData()
-            val processedData = processData(fetchedData)
-            Log.d("AAA", processedData)
+        lifecycleScope.launch {
+            val deferred1 = fetchDataAsync()
+            val deferred2 = fetchData2Async()
+            val processedData = processData("${deferred1.await()} ${deferred2.await()}")
+            Toast.makeText(this@MainActivity, processedData, Toast.LENGTH_LONG).show()
         }
     }
 
-    suspend fun fetchData() = withContext(Dispatchers.IO) {
+    fun CoroutineScope.fetchDataAsync() = async(Dispatchers.IO) {
         Thread.sleep(1000)
         "something"
+    }
+
+    fun CoroutineScope.fetchData2Async() = async(Dispatchers.IO) {
+        Thread.sleep(1000)
+        "good"
     }
 
     suspend fun processData(data: String) = withContext(Dispatchers.IO) {
         Thread.sleep(1000)
         data.toUpperCase()
-    }
-
-
-    suspend fun hello() {
-        delay(1000)
-        Log.d("AAA", "Hello World!")
-        delay(1000)
     }
 }
