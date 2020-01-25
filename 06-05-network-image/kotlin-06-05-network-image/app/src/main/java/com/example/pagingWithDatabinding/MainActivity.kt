@@ -177,8 +177,8 @@ class MainActivity : AppCompatActivity() {
         var url = ObservableField<String>()
 
         fun openDetail(view: View) {
-            val parts = url.get()!!.split("/").toTypedArray()
-            val pid = parts[6].toInt()
+            val parts = url.get()?.split("/")
+            val pid = parts!![6].toInt()
             val context = view.context
             val intent = Intent(context, DetailActivity::class.java)
             intent.putExtra("pid", pid)
