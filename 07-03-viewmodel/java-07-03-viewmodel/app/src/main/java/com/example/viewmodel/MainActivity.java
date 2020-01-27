@@ -1,12 +1,12 @@
 package com.example.viewmodel;
 
-import androidx.lifecycle.ViewModel;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProviders;
 import android.os.Bundle;
+import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import android.widget.TextView;
+import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         TextView textView = findViewById(R.id.textView);
-        PokeViewModel pokeViewModel = ViewModelProviders.of(this).get(PokeViewModel.class);
+        PokeViewModel pokeViewModel = new ViewModelProvider(this).get(PokeViewModel.class);
         pokeViewModel.getResults().observe(this, results -> {
             String text = "";
             for (Result result : results) {
