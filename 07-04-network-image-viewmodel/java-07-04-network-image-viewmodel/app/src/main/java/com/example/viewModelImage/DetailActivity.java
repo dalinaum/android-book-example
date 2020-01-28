@@ -1,4 +1,4 @@
-package com.example.pagingWithDatabinding;
+package com.example.viewModelImage;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,7 +8,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.pagingWithDatabinding.databinding.ActivityDetailBinding;
+import com.example.viewModelImage.databinding.ActivityDetailBinding;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

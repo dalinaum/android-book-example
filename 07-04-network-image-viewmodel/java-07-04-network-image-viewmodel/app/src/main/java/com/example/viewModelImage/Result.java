@@ -1,4 +1,4 @@
-package com.example.pagingWithDatabinding;
+package com.example.viewModelImage;
 
 public class Result {
     public String url;

@@ -8,7 +8,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.pagingWithDatabinding.DetailActivity.ViewModel" />
+            type="com.example.viewModelImage.DetailActivity.ViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
