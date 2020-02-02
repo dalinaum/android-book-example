@@ -1,4 +1,4 @@
-package com.example.pagingWithDatabinding
+package com.example.viewModelImage
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,9 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ObservableField
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PageKeyedDataSource
 import androidx.paging.PagedList
@@ -17,6 +15,7 @@ import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.pagingWithDatabinding.R
 import com.example.pagingWithDatabinding.databinding.ActivityMainBinding
 import com.example.pagingWithDatabinding.databinding.ItemRecyclerviewBinding
 import retrofit2.Retrofit

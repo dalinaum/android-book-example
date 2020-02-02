@@ -2,13 +2,13 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".DetailActivity">
+    tools:context="com.example.viewModelImage.DetailActivity">
 
     <data>
 
         <variable
             name="viewModel"
-            type="com.example.pagingWithDatabinding.DetailActivity.ViewModel" />
+            type="com.example.viewModelImage.DetailActivity.ViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

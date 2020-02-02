@@ -1,4 +1,4 @@
-package com.example.pagingWithDatabinding
+package com.example.viewModelImage
 
 import retrofit2.Call
 import retrofit2.http.GET

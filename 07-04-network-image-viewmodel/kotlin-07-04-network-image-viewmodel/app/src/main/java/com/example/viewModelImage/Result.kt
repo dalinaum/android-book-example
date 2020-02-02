@@ -1,4 +1,4 @@
-package com.example.pagingWithDatabinding
+package com.example.viewModelImage
 
 data class Result(
         var url: String,
