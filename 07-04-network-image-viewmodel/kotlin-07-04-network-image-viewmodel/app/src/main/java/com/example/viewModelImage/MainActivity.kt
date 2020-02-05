@@ -159,21 +159,21 @@ class MainActivity : AppCompatActivity() {
     }
 
     private class MainRecyclerViewViewHolder(binding: ItemRecyclerviewBinding) : RecyclerView.ViewHolder(binding.root) {
-        private val viewModel: ViewModel = ViewModel()
+        private val viewState: ViewState = ViewState()
 
         init {
-            binding.viewModel = viewModel
+            binding.viewState = viewState
         }
 
         fun bind(item: Result?) {
             item?.let {
-                viewModel.name.set(it.name)
-                viewModel.url.set(it.url)
+                viewState.name.set(it.name)
+                viewState.url.set(it.url)
             }
         }
     }
 
-    class ViewModel {
+    class ViewState {
         var name = ObservableField<String>()
         var url = ObservableField<String>()
 

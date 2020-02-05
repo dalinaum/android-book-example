@@ -180,22 +180,22 @@ public class MainActivity extends AppCompatActivity {
 
     private static class MainRecyclerViewViewHolder extends RecyclerView.ViewHolder {
         private final ItemRecyclerviewBinding binding;
-        private final ViewModel viewModel;
+        private final ViewState viewState;
 
         public MainRecyclerViewViewHolder(ItemRecyclerviewBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
-            viewModel = new ViewModel();
-            binding.setViewModel(viewModel);
+            viewState = new ViewState();
+            binding.setViewState(viewState);
         }
 
         public void bind(Result item) {
-            viewModel.name.set(item.name);
-            viewModel.url.set(item.url);
+            viewState.name.set(item.name);
+            viewState.url.set(item.url);
         }
     }
 
-    public static class ViewModel {
+    public static class ViewState {
         public ObservableField<String> name = new ObservableField<>();
         public ObservableField<String> url = new ObservableField<>();
 
