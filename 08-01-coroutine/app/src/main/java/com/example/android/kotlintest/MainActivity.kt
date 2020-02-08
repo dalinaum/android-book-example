@@ -21,17 +21,17 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun CoroutineScope.fetchDataAsync() = async(Dispatchers.IO) {
-        Thread.sleep(1000)
+        delay(1000)
         "something"
     }
 
     fun CoroutineScope.fetchData2Async() = async(Dispatchers.IO) {
-        Thread.sleep(1000)
+        delay(1000)
         "good"
     }
 
     suspend fun processData(data: String) = withContext(Dispatchers.IO) {
-        Thread.sleep(1000)
+        delay(1000)
         data.toUpperCase()
     }
 }
