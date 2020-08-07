@@ -1,7 +1,8 @@
 package com.example.bindingadapter;
 
-import android.databinding.BindingAdapter;
 import android.widget.TextView;
+
+import androidx.databinding.BindingAdapter;
 
 public class TextViewBindingAdapters {
     @BindingAdapter("reverseText")

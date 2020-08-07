@@ -1,12 +1,13 @@
 package com.example.bindingadapter;
 
-import android.databinding.DataBindingUtil;
-import android.databinding.ObservableField;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+import androidx.databinding.ObservableField;
+
 import com.example.dalinaum.bindingadapter.R;
-import com.example.dalinaum.bindingadapter.databinding.*;
+import com.example.dalinaum.bindingadapter.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
