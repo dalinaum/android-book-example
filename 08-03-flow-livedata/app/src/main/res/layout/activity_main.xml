@@ -20,8 +20,8 @@
             android:layout_height="wrap_content"
             android:text="@{viewModel.seoulTime.datetime}"
             app:layout_constraintBottom_toTopOf="@id/utcTime"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="서울시간" />
 
@@ -31,8 +31,8 @@
             android:layout_height="wrap_content"
             android:text="@{viewModel.seoulTime.utc_datetime}"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/seoulTime"
             tools:text="세계시간" />
 
