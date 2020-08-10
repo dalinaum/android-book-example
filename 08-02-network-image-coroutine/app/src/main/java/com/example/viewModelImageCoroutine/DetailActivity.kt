@@ -30,9 +30,7 @@ class DetailActivity : AppCompatActivity() {
 
         fun getPokemon(pid: Int) {
             viewModelScope.launch {
-                val pokemon = withContext(Dispatchers.IO) {
-                    Repository.getPokemon(pid)
-                }
+                val pokemon = Repository.getPokemon(pid)
                 response.value = pokemon
             }
         }
